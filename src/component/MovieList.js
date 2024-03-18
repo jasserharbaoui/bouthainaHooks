@@ -1,13 +1,22 @@
-// MovieList.js
+
 import React from 'react';
 import MovieCard from './MovieCard';
 
-const MovieList = ({ movies }) => {
+
+const MovieList = ({ MoviesData }) => {
+  console.log(MoviesData);
   return (
     <div className="movie-list">
-      {movies.map(movie => (
-        <MovieCard key={movie.title} {...movie} />
-      ))}
+
+       {MoviesData.map(movie => (
+       <MovieCard key={movie.id} movie={movie} /> 
+
+      //   <Filter setFilter={setFilter} />
+      //   {filteredMovies.map(movie => (
+      //  <MovieCard key={movie.id} movie={movie} />
+
+      ))} 
+       {/* <MovieCard/>  */}
     </div>
   );
 };
