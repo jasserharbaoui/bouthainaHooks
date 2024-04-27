@@ -1,60 +1,43 @@
-
-import React, { useState } from 'react';
-import MovieList from './component/MovieList';
-import Filter from './Filter';
-import Deatails from './movieDetails';
-import { filmList} from './component/moviesData';
-import './App.css'
-import { Route, Routes } from 'react-router-dom';
-
 function App() {
-  const [MoviesData, setMoviesData] = useState(filmList);
-
-
-  const [titleFilter, setTitleFilter] = useState('');
-  const [ratingFilter, setRatingFilter] = useState('');
-
-  const filteredMovies = MoviesData.filter(movie =>
-    movie.title.toLowerCase().includes(titleFilter.toLowerCase()) &&
-    movie.rating >= ratingFilter
-  );
-
-  const handleTitleChange = (title) => {
-    setTitleFilter(title);
-  };
-
-  const handleRatingChange = (rating) => {
-    setRatingFilter(rating);
-  };
-
-  const addMovie = (newMovie) => {
-    setMoviesData([...MoviesData, newMovie]);
-  };
-
-  
-
   return (
-    <div className="App">
-        <h1> MY BEST MOUVIS</h1>
-      <div className='button'>
-       <button onClick={() => addMovie({ title: 'New Movie', description: 'Cartoon', posterURL: 'https://tse2.mm.bing.net/th?id=OIP.aft8qp31nTWrcFJ8i9HlqwHaEK&pid=Api&P=0&h=180', rating: 7.0 })}>
-        Add New Movie
-      </button>
-      </div>
-      <Filter onTitleChange={handleTitleChange} onRatingChange={handleRatingChange} />
-      
-
-      <Routes>
-       
-        <Route path="/Detail/:id" element={<Deatails film= {MoviesData}/>}/>
-         <Route path='/' element={<MovieList MoviesData={filteredMovies} />}/>
-
-      </Routes>
-
-    
-      
+    <div  style={{textAlign:"center"}} className="google-map">
+      <h1 style={{color:"red"}}>Google Map Tunisia</h1>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1423167.5302614437!2d10.471073745124803!3d34.055445037841324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1714162552432!5m2!1sar!2seg"
+        width="800"
+        height="550"
+        allowFullScreen={true}
+        loading="lazy"
+        title="Google Map Tunisia">
+        </iframe>
     </div>
   );
 }
 
 export default App;
+
+// import React from 'react';
+// import { Map, GoogleApiWrapper } from 'google-maps-react';
+
+// const mapStyles = {
+//   width: '100%',
+//   height: '400px',
+//   position: 'relative'
+// };
+
+// export class MapContainer extends React.Component {
+//   render() {
+//     return (
+//       <Map
+//         google={this.props.google}
+//         zoom={14}
+//         style={mapStyles}
+//         initialCenter={{ lat: -1.2884, lng: 36.8233 }}
+//       />
+//     );
+//   }
+// }
+
+// export default GoogleApiWrapper({
+//   apiKey: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1423167.5302614437!2d10.471073745124803!3d34.055445037841324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1714162552432!5m2!1sar!2seg'
+// })(MapContainer);
